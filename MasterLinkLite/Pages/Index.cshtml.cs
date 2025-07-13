@@ -1,20 +1,20 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MasterLinkLite.Models;
+using MasterLinkLite.Services;
 
 namespace MasterLinkLite.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public List<Link> Links { get; set; } = new();
+        public string Usuario { get; set; }
 
         public void OnGet()
         {
+            var linkService = new LinkService();
+            Links = linkService.GetAll();
 
+            Usuario = HttpContext.Session.GetString("usuario");
         }
     }
 }

@@ -1,4 +1,46 @@
 ﻿@page
 @model MasterLinkLite.Pages.Admin.LinksModel
 @{
+    ViewData["Title"] = "Administrador de Enlaces";
 }
+
+<h2>Mis Enlaces</h2>
+
+@if (Model.ModoEdicion)
+{
+    <form method="post" asp-page-handler="GuardarEdicion">
+        <input asp-for="Editar.Nombre" placeholder="Nombre" required />
+        <input asp-for="Editar.Proposito" placeholder="Propósito" required />
+        <input asp-for="Editar.Url" placeholder="URL" required />
+        <input type="hidden" asp-for="Editar.Id" />
+        <button type="submit">Guardar cambios</button>
+        <a href="?">Cancelar</a>
+    </form>
+}
+else
+{
+    <form method="post">
+        <input asp-for="Nuevo.Nombre" placeholder="Nombre" required />
+        <input asp-for="Nuevo.Proposito" placeholder="Propósito" required />
+        <input asp-for="Nuevo.Url" placeholder="URL" required />
+        <button type="submit">Agregar</button>
+    </form>
+}
+
+<hr />
+
+<ul>
+    @foreach (var link in Model.MisLinks)
+    {
+        <li>
+            <strong>@link.Nombre:</strong> @link.Proposito -
+            <a href="@link.Url" target="_blank">Ir</a> |
+            <a href="?editarId=@link.Id">Editar</a> |
+            <form method="post" asp-page-handler="Eliminar" asp-route-id="@link.Id" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+    }
+</ul>
+
+<a href="/">Volver</a>

@@ -1,10 +1,29 @@
 ﻿@page
-@model IndexModel
+@model MasterLinkLite.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Master Link";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2>Bienvenido a MasterLink </h2>
+
+<div>
+    @foreach (var link in Model.Links)
+    {
+        <div style="margin-bottom: 10px;">
+            <strong>@link.Nombre</strong> - @link.Proposito
+            <br />
+            <a href="@link.Url" target="_blank">
+                <button>Ir al sitio</button>
+            </a>
+        </div>
+    }
 </div>
+
+@if (!string.IsNullOrEmpty(Model.Usuario))
+{
+    <p>Sesión activa como: @Model.Usuario | <a href="/Admin/Links">Administrar</a></p>
+}
+else
+{
+    <p><a href="/Login">Iniciar sesión</a> | <a href="/Register">Registrarse</a></p>
+}
