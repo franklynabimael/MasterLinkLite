@@ -4,26 +4,34 @@
     ViewData["Title"] = "Master Link";
 }
 
-<h2>Bienvenido a MasterLink </h2>
+<h2 class="mb-4 text-center" style="color: var(--purpura);">
+    Bienvenido a MasterLink
+</h2>
 
-<div>
+<div class="container d-flex flex-column align-items-center">
     @foreach (var link in Model.Links)
     {
-        <div style="margin-bottom: 10px;">
-            <strong>@link.Nombre</strong> - @link.Proposito
-            <br />
-            <a href="@link.Url" target="_blank">
-                <button>Ir al sitio</button>
-            </a>
-        </div>
+        var bgClass = GetGradientClass(link.Nombre);
+        <a href="@link.Url" target="_blank" rel="noopener noreferrer" class="link-box @bgClass mb-3 w-100" style="max-width: 500px;">
+            <strong>@link.Nombre</strong><br />
+            <small>@link.Proposito</small>
+        </a>
     }
 </div>
 
-@if (!string.IsNullOrEmpty(Model.Usuario))
-{
-    <p>Sesión activa como: @Model.Usuario | <a href="/Admin/Links">Administrar</a></p>
-}
-else
-{
-    <p><a href="/Login">Iniciar sesión</a> | <a href="/Register">Registrarse</a></p>
+@functions {
+    private readonly string[] gradients = new[] {
+        "bg-gradient-1",
+        "bg-gradient-2",
+        "bg-gradient-3",
+        "bg-gradient-4",
+        "bg-gradient-5"
+    };
+
+    public string GetGradientClass(string key)
+    {
+        int hash = key.Aggregate(0, (acc, c) => acc + c);
+        int index = hash % gradients.Length;
+        return gradients[index];
+    }
 }
