@@ -13,5 +13,10 @@
     "Id": 3,
     "NombreUsuario": "otro",
     "Password": "otro"
+  },
+  {
+    "Id": 4,
+    "NombreUsuario": "elotro",
+    "Password": "admin"
   }
 ]
