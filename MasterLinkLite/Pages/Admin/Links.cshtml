@@ -4,43 +4,81 @@
     ViewData["Title"] = "Administrador de Enlaces";
 }
 
-<h2>Mis Enlaces</h2>
+<div class="container my-4">
+    <h2 class="mb-4 text-center fw-bold" style="color: var(--purpura);">
+        Mis Enlaces
+    </h2>
 
-@if (Model.ModoEdicion)
-{
-    <form method="post" asp-page-handler="GuardarEdicion">
-        <input asp-for="Editar.Nombre" placeholder="Nombre" required />
-        <input asp-for="Editar.Proposito" placeholder="Propósito" required />
-        <input asp-for="Editar.Url" placeholder="URL" required />
-        <input type="hidden" asp-for="Editar.Id" />
-        <button type="submit">Guardar cambios</button>
-        <a href="?">Cancelar</a>
-    </form>
-}
-else
-{
-    <form method="post">
-        <input asp-for="Nuevo.Nombre" placeholder="Nombre" required />
-        <input asp-for="Nuevo.Proposito" placeholder="Propósito" required />
-        <input asp-for="Nuevo.Url" placeholder="URL" required />
-        <button type="submit">Agregar</button>
-    </form>
-}
-
-<hr />
-
-<ul>
-    @foreach (var link in Model.MisLinks)
+    @if (Model.ModoEdicion)
     {
-        <li>
-            <strong>@link.Nombre:</strong> @link.Proposito -
-            <a href="@link.Url" target="_blank">Ir</a> |
-            <a href="?editarId=@link.Id">Editar</a> |
-            <form method="post" asp-page-handler="Eliminar" asp-route-id="@link.Id" style="display:inline;">
-                <button type="submit">Eliminar</button>
-            </form>
-        </li>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Editar Enlace</h5>
+                <form method="post" asp-page-handler="GuardarEdicion">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input asp-for="Editar.Nombre" class="form-control" placeholder="Nombre" required />
+                        </div>
+                        <div class="col-md-4">
+                            <input asp-for="Editar.Proposito" class="form-control" placeholder="Propósito" required />
+                        </div>
+                        <div class="col-md-4">
+                            <input asp-for="Editar.Url" class="form-control" placeholder="URL" required />
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Editar.Id" />
+                    <div class="mt-3 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        <a href="?" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     }
-</ul>
+    else
+    {
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Agregar Enlace</h5>
+                <form method="post">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input asp-for="Nuevo.Nombre" class="form-control" placeholder="Nombre" required />
+                        </div>
+                        <div class="col-md-4">
+                            <input asp-for="Nuevo.Proposito" class="form-control" placeholder="Propósito" required />
+                        </div>
+                        <div class="col-md-4">
+                            <input asp-for="Nuevo.Url" class="form-control" placeholder="URL" required />
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-success">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
 
-<a href="/">Volver</a>
+    <hr />
+
+    <ul class="list-group">
+        @foreach (var link in Model.MisLinks)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>@link.Nombre:</strong> @link.Proposito
+                </div>
+                <div class="btn-group" role="group">
+                    <a href="@link.Url" target="_blank" class=" btn btn-primary">Ir </a>
+                    <a href="?editarId=@link.Id" class="btn btn-warning">Editar </a>
+                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@link.Id" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Eliminar </button>
+                    </form>
+                </div>
+            </li>
+        }
+    </ul>
+
+   
+</div>
