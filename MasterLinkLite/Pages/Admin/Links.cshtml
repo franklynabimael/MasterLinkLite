@@ -5,9 +5,9 @@
 }
 
 <div class="container my-4">
-    <h2 class="mb-4 text-center fw-bold" style="color: var(--purpura);">
-        Mis Enlaces
-    </h2>
+    <h4 class="mb-4 text-center fw-bold" style="color: var(--texto-oscuro);">
+        Administrador de Enlaces
+    </h4>
 
     @if (Model.ModoEdicion)
     {
@@ -56,29 +56,43 @@
                         <button type="submit" class="btn btn-success">Agregar</button>
                     </div>
                 </form>
+
             </div>
         </div>
     }
 
     <hr />
 
-    <ul class="list-group">
-        @foreach (var link in Model.MisLinks)
-        {
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <strong>@link.Nombre:</strong> @link.Proposito
-                </div>
-                <div class="btn-group" role="group">
-                    <a href="@link.Url" target="_blank" class=" btn btn-primary">Ir </a>
-                    <a href="?editarId=@link.Id" class="btn btn-warning">Editar </a>
-                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@link.Id" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Eliminar </button>
-                    </form>
-                </div>
-            </li>
-        }
-    </ul>
+    <table class="table table-bordered table-hover align-middle">
+        <input type="text" id="filtro" class="form-control mb-4" placeholder="Buscar enlace por nombre o propósito" onkeyup="filtrarTabla()" />
 
-   
+        <thead class="table-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Propósito</th>
+                <th>URL</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var link in Model.MisLinks)
+            {
+                <tr>
+                    <td>@link.Nombre</td>
+                    <td>@link.Proposito</td>
+                    <td>
+                        <a href="@link.Url" target="_blank">@link.Url</a>
+                    </td>
+                    <td>
+                        <div class="d-flex gap-2" role="group">
+                            <a href="?editarId=@link.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <form method="post" asp-page-handler="Eliminar" asp-route-id="@link.Id" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

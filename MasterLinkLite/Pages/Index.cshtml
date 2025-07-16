@@ -4,14 +4,11 @@
     ViewData["Title"] = "Master Link";
 }
 
-<h2 class="mb-4 text-center" style="color: var(--purpura);">
-    Bienvenido a MasterLink
-</h2>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8">
-            <input type="text" id="filtro" class="form-control mb-4" placeholder="Buscar enlace por nombre o propósito..." onkeyup="filtrarTabla()" />
+            <input type="text" id="filtro" class="form-control mb-4" placeholder="Buscar enlace por nombre o propósito" onkeyup="filtrarTabla()" />
 
             <table class="table table-bordered table-hover table-striped">
                 <thead class="table-light">
@@ -39,39 +36,3 @@
         </div>
     </div>
 </div>
-
-    <script>
-        function filtrarTabla() {
-            const input = document.getElementById("filtro");
-            const filter = input.value.toLowerCase();
-            const rows = document.querySelectorAll("table tbody tr");
-
-            rows.forEach(row => {
-                const nombre = row.cells[0].innerText.toLowerCase();
-                const proposito = row.cells[1].innerText.toLowerCase();
-
-                if (nombre.includes(filter) || proposito.includes(filter)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
-        }
-    </script>
-
-@* @functions {
-    private readonly string[] gradients = new[] {
-        "bg-gradient-1",
-        "bg-gradient-2",
-        "bg-gradient-3",
-        "bg-gradient-4",
-        "bg-gradient-5"
-    };
-
-    public string GetGradientClass(string key)
-    {
-        int hash = key.Aggregate(0, (acc, c) => acc + c);
-        int index = hash % gradients.Length;
-        return gradients[index];
-    }
-} *@
