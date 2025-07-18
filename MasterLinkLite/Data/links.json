@@ -3,84 +3,72 @@
     "Id": 3,
     "Nombre": "Sap access form",
     "Proposito": "Request or modify rol in SAP",
-    "Url": "https://convateccloud.sharepoint.com/sites/WWKSP/Lists/SAPAccessRequest_App/AllItems.aspx",
-    "UsuarioId": 2
+    "Url": "https://convateccloud.sharepoint.com/sites/WWKSP/Lists/SAPAccessRequest_App/AllItems.aspx"
   },
   {
     "Id": 4,
     "Nombre": "Info Security",
     "Proposito": "Request information about security",
-    "Url": "mailto:infosec@convatec.com",
-    "UsuarioId": 2
+    "Url": "mailto:infosec@convatec.com"
   },
   {
     "Id": 5,
     "Nombre": "CVT CORPORATE WIFI CONNECTION",
     "Proposito": "How to",
-    "Url": "\t\tCVT-WIFI-Connection_User-Guide_V6 \t\t",
-    "UsuarioId": 2
+    "Url": "\t\tCVT-WIFI-Connection_User-Guide_V6 \t\t"
   },
   {
     "Id": 6,
     "Nombre": "Details Wifi connection",
     "Proposito": "Flow Process and access",
-    "Url": "\t\tCVT-WIFI-SSIDs and profiling.pptx \t\t",
-    "UsuarioId": 2
+    "Url": "\t\tCVT-WIFI-SSIDs and profiling.pptx \t\t"
   },
   {
     "Id": 7,
     "Nombre": "Lansweeper",
     "Proposito": "Network discover",
-    "Url": "http://ukdxsvscvtc189:81/Default.aspx",
-    "UsuarioId": 2
+    "Url": "http://ukdxsvscvtc189:81/Default.aspx"
   },
   {
     "Id": 8,
     "Nombre": "Hostserver Grupo Tress",
     "Proposito": "Instaladores para Sistema Tress MX",
-    "Url": "https://hst-unomed.tress.com.mx/InstaladoresPublico/",
-    "UsuarioId": 2
+    "Url": "https://hst-unomed.tress.com.mx/InstaladoresPublico/"
   },
   {
     "Id": 9,
     "Nombre": "KB how to raise a ticket",
     "Proposito": "to raise a ticket",
-    "Url": "https://convatec.service-now.com/myservices?id=kb_article\u0026sysparm_article=KB0012439",
-    "UsuarioId": 2
+    "Url": "https://convatec.service-now.com/myservices?id=kb_article\u0026sysparm_article=KB0012439"
   },
   {
     "Id": 10,
     "Nombre": "Image Offline Windows 10\t",
     "Proposito": "Image Offline Windows 10\t",
-    "Url": "https://convateccloud.sharepoint.com/sites/EUCManagement/Image%20Details/Forms/AllItems.aspx?viewid=4fdf660a%2Df1a1%2D442f%2Dbc7f%2Dccdd45191089",
-    "UsuarioId": 2
+    "Url": "https://convateccloud.sharepoint.com/sites/EUCManagement/Image%20Details/Forms/AllItems.aspx?viewid=4fdf660a%2Df1a1%2D442f%2Dbc7f%2Dccdd45191089"
   },
   {
     "Id": 11,
     "Nombre": "Email retention policy",
     "Proposito": "How to setup retention policy",
-    "Url": "https://convateccloud.sharepoint.com/sites/ISEC/SitePages/Setting-up-email-retention.aspx",
-    "UsuarioId": 2
+    "Url": "https://convateccloud.sharepoint.com/sites/ISEC/SitePages/Setting-up-email-retention.aspx"
   },
   {
     "Id": 12,
     "Nombre": "Bitlocker Key\t",
     "Proposito": "How to recovery Bitlocker",
-    "Url": "https://mbamconsole.corp.convatec.com/HelpDesk/KeyRecoveryPage.aspx",
-    "UsuarioId": 2
+    "Url": "https://mbamconsole.corp.convatec.com/HelpDesk/KeyRecoveryPage.aspx"
   },
   {
     "Id": 13,
     "Nombre": "Litigation Hold and eDiscovery Guidance",
     "Proposito": "N\\A",
-    "Url": "https://convateccloud.sharepoint.com/sites/ISEC/SitePages/Litigation-Hold-and-eDiscovery-Guidance.aspx",
-    "UsuarioId": 2
+    "Url": "https://convateccloud.sharepoint.com/sites/ISEC/SitePages/Litigation-Hold-and-eDiscovery-Guidance.aspx"
   },
   {
     "Id": 14,
     "Nombre": "information security policies",
     "Proposito": "information security policies",
-    "Url": "https://convateccloud.sharepoint.com/sites/IT-OLD/SitePages/IT_Policies.aspx",
-    "UsuarioId": 2
+    "Url": "https://convateccloud.sharepoint.com/sites/IT-OLD/SitePages/IT_Policies.aspx"
   }
 ]

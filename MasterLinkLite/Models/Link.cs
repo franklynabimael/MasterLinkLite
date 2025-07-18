@@ -6,6 +6,5 @@
         public string Nombre { get; set; }
         public string Proposito { get; set; }
         public string Url { get; set; }
-        public int UsuarioId { get; set; }
     }
 }

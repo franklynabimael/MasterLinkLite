@@ -26,14 +26,11 @@ namespace MasterLinkLite.Pages.Admin
 
         public IActionResult OnGet(int? editarId)
         {
-            var userId = HttpContext.Session.GetInt32("usuarioId");
-            if (userId == null) return RedirectToPage("/Login");
-
-            MisLinks = _linkService.GetByUserId(userId.Value);
+            MisLinks = _linkService.GetAll(); // Muestra todos los enlaces
 
             if (editarId.HasValue)
             {
-                var link = MisLinks.FirstOrDefault(l => l.Id == editarId && l.UsuarioId == userId.Value);
+                var link = MisLinks.FirstOrDefault(l => l.Id == editarId);
                 if (link != null)
                 {
                     Editar = new Link
@@ -52,10 +49,7 @@ namespace MasterLinkLite.Pages.Admin
 
         public IActionResult OnPost()
         {
-            var userId = HttpContext.Session.GetInt32("usuarioId");
-            if (userId == null) return RedirectToPage("/Login");
-
-            Nuevo.UsuarioId = userId.Value;
+            
             _linkService.Crear(Nuevo);
 
             return RedirectToPage();
@@ -63,19 +57,17 @@ namespace MasterLinkLite.Pages.Admin
 
         public IActionResult OnPostEliminar(int id)
         {
-            var userId = HttpContext.Session.GetInt32("usuarioId");
-            if (userId == null) return RedirectToPage("/Login");
+            
 
-            _linkService.Eliminar(id, userId.Value);
+            _linkService.Eliminar(id);
             return RedirectToPage();
         }
 
         public IActionResult OnPostGuardarEdicion()
         {
-            var userId = HttpContext.Session.GetInt32("usuarioId");
-            if (userId == null) return RedirectToPage("/Login");
+            
 
-            Editar.UsuarioId = userId.Value;
+        
             _linkService.Actualizar(Editar);
             return RedirectToPage();
         }
