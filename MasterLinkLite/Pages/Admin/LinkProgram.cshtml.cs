@@ -2,43 +2,44 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MasterLinkLite.Models;
 using MasterLinkLite.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MasterLinkLite.Pages.Admin
 {
-    public class LinksModel : PageModel
+    public class LinkProgramModel : PageModel
     {
-        public List<Link> MisLinks { get; set; } = new();
+        public List<Programs> MisProgramas { get; set; } = new();
 
         [BindProperty]
-        public Link Nuevo { get; set; }
+        public Programs Nuevo { get; set; }
 
         [BindProperty]
-        public Link Editar { get; set; }
+        public Programs Editar { get; set; }
 
         public bool ModoEdicion { get; set; }
 
-        private readonly LinkService _linkService;
+        private readonly ProgramService _programService;
 
-        public LinksModel()
+        public LinkProgramModel()
         {
-            _linkService = new LinkService();
+            _programService = new ProgramService();
         }
 
         public IActionResult OnGet(int? editarId)
         {
-            MisLinks = _linkService.GetAll(); // Muestra todos los enlaces
+            MisProgramas = _programService.GetAll();
 
             if (editarId.HasValue)
             {
-                var link = MisLinks.FirstOrDefault(l => l.Id == editarId);
-                if (link != null)
+                var prog = MisProgramas.FirstOrDefault(p => p.Id == editarId);
+                if (prog != null)
                 {
-                    Editar = new Link
+                    Editar = new Programs
                     {
-                        Id = link.Id,
-                        Nombre = link.Nombre,
-                        Proposito = link.Proposito,
-                        Url = link.Url
+                        Id = prog.Id,
+                        Nombre = prog.Nombre,
+                        Url = prog.Url
                     };
                     ModoEdicion = true;
                 }
@@ -49,26 +50,19 @@ namespace MasterLinkLite.Pages.Admin
 
         public IActionResult OnPost()
         {
-            
-            _linkService.Crear(Nuevo);
-
+            _programService.Crear(Nuevo);
             return RedirectToPage();
         }
 
         public IActionResult OnPostEliminar(int id)
         {
-            
-
-            _linkService.Eliminar(id);
+            _programService.Eliminar(id);
             return RedirectToPage();
         }
 
         public IActionResult OnPostGuardarEdicion()
         {
-            
-
-        
-            _linkService.Actualizar(Editar);
+            _programService.Actualizar(Editar);
             return RedirectToPage();
         }
     }

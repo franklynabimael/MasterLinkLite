@@ -1,28 +1,24 @@
 ﻿@page
-@model MasterLinkLite.Pages.Admin.LinksModel
+@model MasterLinkLite.Pages.Admin.LinkProgramModel
 @{
-    ViewData["Title"] = "Administrador de Enlaces";
+    ViewData["Title"] = "Administrador de Programas";
+    ViewData["OcultarNavbar"] = true;
 }
 
 <div class="container mt-4">
-    <h4 class="mb-4 text-center fw-bold" style="color: var(--texto-oscuro);">
-        Administar enlaces
-    </h4>
+    <h4 class="mb-4 text-center fw-bold">Administrar Programas</h4>
 
     @if (Model.ModoEdicion)
     {
         <div class="card shadow-sm mb-4">
             <div class="card-body">
-                <h5 class="card-title">Editar Enlace</h5>
+                <h5 class="card-title">Editar Programa</h5>
                 <form method="post" asp-page-handler="GuardarEdicion">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <input asp-for="Editar.Nombre" class="form-control" placeholder="Nombre" required />
                         </div>
-                        <div class="col-md-4">
-                            <input asp-for="Editar.Proposito" class="form-control" placeholder="Propósito" required />
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <input asp-for="Editar.Url" class="form-control" placeholder="URL" required />
                         </div>
                     </div>
@@ -39,21 +35,20 @@
     {
         <div class="card shadow-sm mb-4">
             <div class="card-body">
-                <h5 class="card-title">Agregar Enlace</h5>
+                <h5 class="card-title">Agregar Programa</h5>
                 <form method="post">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <input asp-for="Nuevo.Nombre" class="form-control" placeholder="Nombre" required />
                         </div>
-                        <div class="col-md-4">
-                            <input asp-for="Nuevo.Proposito" class="form-control" placeholder="Propósito" required />
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <input asp-for="Nuevo.Url" class="form-control" placeholder="URL" required />
                         </div>
                     </div>
                     <div class="mt-3">
+                        <a href=/home class="btn btn-warning" style="color: #FFF">Inicio</a>
                         <button type="submit" class="btn btn-success">Agregar</button>
+                        
                     </div>
                 </form>
             </div>
@@ -61,31 +56,28 @@
     }
 
     <hr />
+    <input type="text" id="filtro" class="form-control mb-4" placeholder="Buscar Programa" onkeyup="filtrarTabla()" />
 
-    <input type="text" id="filtro" class="form-control mb-4" placeholder="Buscar enlace por nombre o propósito" onkeyup="filtrarTabla()" />
-
-    <table class="table table-bordered table-hover align-middle">
+     <table class="table table-bordered table-hover align-middle">
         <thead class="table-light">
             <tr>
                 <th>Nombre</th>
-                <th>Propósito</th>
                 <th>URL</th>
                 <th>Acción</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var link in Model.MisLinks)
+            @foreach (var x in Model.MisProgramas)
             {
                 <tr>
-                    <td>@link.Nombre</td>
-                    <td>@link.Proposito</td>
+                    <td>@x.Nombre</td>
                     <td>
-                        <a href="@link.Url" target="_blank">@link.Url</a>
+                        <a href="@x.Url" target="_blank">@x.Url</a>
                     </td>
                     <td>
                         <div class="d-flex gap-2" role="group">
-                            <a href="?editarId=@link.Id" class="btn btn-warning btn-sm">Editar</a>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmarEliminarModal" data-link-id="@link.Id">
+                            <a href="?editarId=@x.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmarEliminarModal" data-link-id="@x.Id">
                                 Eliminar
                             </button>
                         </div>
@@ -106,7 +98,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
-                    ¿Está seguro que desea eliminar este enlace?
+                    ¿Está seguro que desea Eliminar?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -116,6 +108,30 @@
         </div>
     </div>
 </div>
+
+
+@* <div class="row row-cols-1 row-cols-md-3 g-4"> 
+        @foreach (var prog in Model.MisProgramas)
+        {
+     
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@prog.Nombre</h5>
+                        <p class="card-text">
+                            <a href="@prog.Url" target="_blank">@prog.Url</a>
+                        </p>
+                        <div class="d-flex gap-2">
+                            <a href="?editarId=@prog.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <form method="post" asp-page-handler="Eliminar" asp-route-id="@prog.Id" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        }
+    </div> *@
 
 @section Scripts {
     <script>

@@ -1,0 +1,53 @@
+﻿@page
+@model MasterLinkLite.Pages.HomeModel
+@{
+    ViewData["Title"] = "programs manager";
+    ViewData["OcultarNavbar"] = true;
+}
+
+
+
+<div class="container mt-5">
+    <h1 class="page-title">Programs Manager</h1>
+    <input type="text" id="filtro" class="form-control mb-4" placeholder="Buscar Programa" onkeyup="filtrar()" />
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <!--  Master Link -->
+        <div class="col">
+            <a href=/index target="_blank" class="text-decoration-none" style="display:block;">
+                <div class="card h-100 shadow program-card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Master Link</h5>
+                        <p> </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        @foreach (var prog in Model.Programas)
+        {
+            <div class="col">
+
+                <a href="@prog.Url" target="_blank" class="text-decoration-none" style="display:block;">
+                    <div class="card h-100 shadow program-card">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@prog.Nombre</h5>
+                            <p class="card-text mt-auto">@prog.Url</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+        <!--  Configuracion -->
+        <div class="col">
+            <a href=/admin/LinkProgram target="_blank" class="text-decoration-none" style="display:block;">
+                <div class="card h-100 shadow program-card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Administrar</h5>
+                        <p> </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+     
+    </div>
+</div>
