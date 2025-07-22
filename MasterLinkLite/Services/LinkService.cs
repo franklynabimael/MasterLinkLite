@@ -14,11 +14,6 @@ namespace MasterLinkLite.Services
             return JsonSerializer.Deserialize<List<Link>>(json) ?? new();
         }
 
-        public List<Link> GetByUserId(int usuarioId)
-        {
-            return GetAll().Where(l => l.UsuarioId == usuarioId).ToList();
-        }
-
         public void Crear(Link nuevo)
         {
             var lista = GetAll();
@@ -27,27 +22,27 @@ namespace MasterLinkLite.Services
             Guardar(lista);
         }
 
-        public void Eliminar(int id, int usuarioId)
+        public void Eliminar(int id)
         {
             var lista = GetAll();
-            var link = lista.FirstOrDefault(l => l.Id == id && l.UsuarioId == usuarioId);
+            var link = lista.FirstOrDefault(l => l.Id == id);
             if (link != null)
             {
                 lista.Remove(link);
                 Guardar(lista);
             }
         }
+
         public void Actualizar(Link linkActualizado)
         {
             var lista = GetAll();
-            var index = lista.FindIndex(l => l.Id == linkActualizado.Id && l.UsuarioId == linkActualizado.UsuarioId);
+            var index = lista.FindIndex(l => l.Id == linkActualizado.Id);
             if (index != -1)
             {
                 lista[index] = linkActualizado;
                 Guardar(lista);
             }
         }
-
 
         private void Guardar(List<Link> lista)
         {

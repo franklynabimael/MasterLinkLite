@@ -21,19 +21,19 @@
 
             public string Mensaje { get; set; }
 
-            public IActionResult OnPost()
-            {
-                var usuario = _usuarioService.ValidarLogin(Username, Password);
-                if (usuario != null)
-                {
-                    HttpContext.Session.SetString("usuario", usuario.NombreUsuario);
-                    HttpContext.Session.SetInt32("usuarioId", usuario.Id);
+            //public IActionResult OnPost()
+            //{
+            //    var usuario = _usuarioService.ValidarLogin(Username, Password);
+            //    if (usuario != null)
+            //    {
+            //        HttpContext.Session.SetString("usuario", usuario.NombreUsuario);
+            //        HttpContext.Session.SetInt32("usuarioId", usuario.Id);
 
-                    return RedirectToPage("/Admin/Links");
-                }
+            //        return RedirectToPage("/Admin/Links");
+            //    }
 
-                Mensaje = "Credenciales incorrectas.";
-                return Page();
-            }
+            //    Mensaje = "Credenciales incorrectas.";
+            //    return Page();
+            //}
         }
     }

@@ -27,7 +27,7 @@ body {
 
 
 :root {
-    --purpura: #6f2595;
+    --purpura: #61267f;
     --magenta: #aa0061;
     --rosa-claro: #c43484;
     --rosa-pastel: #e170ac;
@@ -106,4 +106,69 @@ body {
 
 .bg-gradient-5 {
     background: linear-gradient(45deg, var(--rosa-claro), var(--rosa-pastel));
+}
+
+/* Para program*/
+.program-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background: linear-gradient( red);
+    position: relative;
+    overflow: hidden;
+}
+
+    .program-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+        transition: opacity 0.3s ease;
+    }
+
+    .program-card:hover::before {
+        opacity: 0.9;
+    }
+
+    .program-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .program-card .card-body {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding: 2rem;
+    }
+
+    .program-card .card-title {
+        font-weight: 600;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .program-card .card-text {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        word-break: break-all;
+        line-height: 1.5;
+    }
+
+
+
+.page-title {
+    color: #000;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
 }
